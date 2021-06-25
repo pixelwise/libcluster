@@ -26,7 +26,6 @@
 // Namespaces
 //
 
-using namespace std;
 using namespace Eigen;
 using namespace distributions;
 using namespace libcluster;
@@ -92,7 +91,7 @@ vvMatrixXd llnumpy2vvMatrixXd (const boost::python::list& X)
 
 
 // Get all the means from Gaussian clusters, Kx[1xD] matrices
-vMatrixXd getmean (const vector<GaussWish>& clusters)
+vMatrixXd getmean (const std::vector<GaussWish>& clusters)
 {
   vMatrixXd means;
 
@@ -104,7 +103,7 @@ vMatrixXd getmean (const vector<GaussWish>& clusters)
 
 
 // Get all of the covarances of Gaussian clusters, Kx[DxD] matrices
-vMatrixXd getcov (const vector<GaussWish>& clusters)
+vMatrixXd getcov (const std::vector<GaussWish>& clusters)
 {
   vMatrixXd covs;
 
@@ -117,9 +116,9 @@ vMatrixXd getcov (const vector<GaussWish>& clusters)
 
 // Get the expected cluster weights in each of the groups
 template<class W>
-vector<ArrayXd> getweights (const vector<W>& weights)
+std::vector<ArrayXd> getweights (const std::vector<W>& weights)
 {
-  vector<ArrayXd> rwgt;
+  std::vector<ArrayXd> rwgt;
   for (size_t k=0; k < weights.size(); ++k)
     rwgt.push_back(ArrayXd(weights[k].Elogweight().exp()));
 
@@ -146,7 +145,7 @@ boost::python::tuple wrapperVDP (
   // Pre-allocate some stuff
   MatrixXd qZ;
   StickBreak weights;
-  vector<GaussWish> clusters;
+  std::vector<GaussWish> clusters;
 
   // Do the clustering
   double f = learnVDP(X_, qZ, weights, clusters, clusterprior, maxclusters,
@@ -159,7 +158,7 @@ boost::python::tuple wrapperVDP (
 
 
 // BGMM
-boost::python::tuple wrapperBGMM (
+std::tuple wrapperBGMM (
     const object& X,
     const float clusterprior,
     const int maxclusters,
@@ -173,7 +172,7 @@ boost::python::tuple wrapperBGMM (
   // Pre-allocate some stuff
   MatrixXd qZ;
   Dirichlet weights;
-  vector<GaussWish> clusters;
+  std::vector<GaussWish> clusters;
 
   // Do the clustering
   double f = learnBGMM(X_, qZ, weights, clusters, clusterprior, maxclusters,
@@ -186,7 +185,7 @@ boost::python::tuple wrapperBGMM (
 
 
 // GMC
-boost::python::tuple wrapperGMC (
+std::tuple wrapperGMC (
     const boost::python::list &X,
     const float clusterprior,
     const int maxclusters,
@@ -200,8 +199,8 @@ boost::python::tuple wrapperGMC (
 
   // Pre-allocate some stuff
   vMatrixXd qZ;
-  vector<GDirichlet> weights;
-  vector<GaussWish> clusters;
+  std::vector<GDirichlet> weights;
+  std::vector<GaussWish> clusters;
 
   // Do the clustering
   double f = learnGMC(X_, qZ, weights, clusters, clusterprior, maxclusters,
@@ -214,7 +213,7 @@ boost::python::tuple wrapperGMC (
 
 
 // SGMC
-boost::python::tuple wrapperSGMC (
+std::tuple wrapperSGMC (
     const boost::python::list &X,
     const float clusterprior,
     const int maxclusters,
@@ -228,8 +227,8 @@ boost::python::tuple wrapperSGMC (
 
   // Pre-allocate some stuff
   vMatrixXd qZ;
-  vector<Dirichlet> weights;
-  vector<GaussWish> clusters;
+  std::vector<Dirichlet> weights;
+  std::vector<GaussWish> clusters;
 
   // Do the clustering
   double f = learnSGMC(X_, qZ, weights, clusters, clusterprior, maxclusters, 
@@ -242,7 +241,7 @@ boost::python::tuple wrapperSGMC (
 
 
 // SCM
-boost::python::tuple wrapperSCM (
+std::tuple wrapperSCM (
     const boost::python::list &X,
     const float dirprior,
     const float gausprior,
@@ -258,9 +257,9 @@ boost::python::tuple wrapperSCM (
   // Pre-allocate some stuff
   vMatrixXd qY;
   vvMatrixXd qZ;
-  vector<GDirichlet> weights_j;
-  vector<Dirichlet> weights_t;
-  vector<GaussWish> clusters;
+  std::vector<GDirichlet> weights_j;
+  std::vector<Dirichlet> weights_t;
+  std::vector<GaussWish> clusters;
 
   // Do the clustering
   double f = learnSCM(X_, qY, qZ, weights_j, weights_t, clusters, dirprior,
@@ -273,7 +272,7 @@ boost::python::tuple wrapperSCM (
 
 
 // MCM
-boost::python::tuple wrapperMCM (
+std::tuple wrapperMCM (
     const boost::python::list &W,
     const boost::python::list &X,
     const float gausprior_t,
@@ -291,10 +290,10 @@ boost::python::tuple wrapperMCM (
   // Pre-allocate some stuff
   vMatrixXd qY;
   vvMatrixXd qZ;
-  vector<GDirichlet> weights_j;
-  vector<Dirichlet> weights_t;
-  vector<GaussWish> clusters_t;
-  vector<GaussWish> clusters_k;
+  std::vector<GDirichlet> weights_j;
+  std::vector<Dirichlet> weights_t;
+  std::vector<GaussWish> clusters_t;
+  std::vector<GaussWish> clusters_k;
 
   // Do the clustering
   double f = learnMCM(W_, X_, qY, qZ, weights_j, weights_t, clusters_t, 
