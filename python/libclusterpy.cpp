@@ -132,7 +132,7 @@ vector<ArrayXd> getweights (const vector<W>& weights)
 //
 
 // VDP
-tuple wrapperVDP (
+boost::python::tuple wrapperVDP (
     const object& X,
     const float clusterprior,
     const int maxclusters,
@@ -159,7 +159,7 @@ tuple wrapperVDP (
 
 
 // BGMM
-tuple wrapperBGMM (
+boost::python::tuple wrapperBGMM (
     const object& X,
     const float clusterprior,
     const int maxclusters,
@@ -186,7 +186,7 @@ tuple wrapperBGMM (
 
 
 // GMC
-tuple wrapperGMC (
+boost::python::tuple wrapperGMC (
     const boost::python::list &X,
     const float clusterprior,
     const int maxclusters,
@@ -214,7 +214,7 @@ tuple wrapperGMC (
 
 
 // SGMC
-tuple wrapperSGMC (
+boost::python::tuple wrapperSGMC (
     const boost::python::list &X,
     const float clusterprior,
     const int maxclusters,
@@ -242,7 +242,7 @@ tuple wrapperSGMC (
 
 
 // SCM
-tuple wrapperSCM (
+boost::python::tuple wrapperSCM (
     const boost::python::list &X,
     const float dirprior,
     const float gausprior,
@@ -273,7 +273,7 @@ tuple wrapperSCM (
 
 
 // MCM
-tuple wrapperMCM (
+boost::python::tuple wrapperMCM (
     const boost::python::list &W,
     const boost::python::list &X,
     const float gausprior_t,

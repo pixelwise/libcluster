@@ -1,13 +1,6 @@
 if(BUILD_PYTHON_INTERFACE)
 
   message(STATUS "Will build the python interface")
-  if(BUILD_USE_PYTHON3)
-      set(PYCMD "python3")
-      message(STATUS "Will use python 3")
-  else(BUILD_USE_PYTHON3)
-      set(PYCMD "python2")
-      message(STATUS "Will use python 2")
-  endif(BUILD_USE_PYTHON3)
 
   # Python needs row major matrices (for convenience)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DEIGEN_DEFAULT_TO_ROW_MAJOR")
