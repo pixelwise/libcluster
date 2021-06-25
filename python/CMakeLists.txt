@@ -39,16 +39,16 @@ if(BUILD_PYTHON_INTERFACE)
       ${PROJECT_NAME}
   )
 
+  set_target_properties(${PROJECT_NAME}py
+      PROPERTIES
+      PREFIX ""
+      SUFFIX ".so"
+  )
+
 
   #--------------------------------#
   # Install Instructions           #
   #--------------------------------#
-
-  # Get python path
-  execute_process(COMMAND ${PYCMD} -c
-    "from distutils.sysconfig import get_python_lib; print(get_python_lib())"
-    OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
 
   # Install target
   install(TARGETS ${PROJECT_NAME}py LIBRARY DESTINATION lib/python)
