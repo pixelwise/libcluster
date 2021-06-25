@@ -25,6 +25,7 @@
 
 #include <boost/python.hpp>
 #include <boost/python/numpy.hpp>
+#include <numpy/arrayobject.h>
 #include "libcluster.h"
 
 
