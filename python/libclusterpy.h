@@ -148,7 +148,7 @@ void
 #endif
 init_numpy()
 {
-    return import_array();
+    import_array();
 } 
 
 
