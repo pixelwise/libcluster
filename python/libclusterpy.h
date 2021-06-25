@@ -148,10 +148,7 @@ void
 #endif
 init_numpy()
 {
-    import_array();
-#if PY_MAJOR_VERSION >= 3
-    return NULL;
-#endif
+    return import_array();
 } 
 
 
