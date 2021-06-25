@@ -35,8 +35,7 @@ if(BUILD_PYTHON_INTERFACE)
 
   target_link_libraries(${PROJECT_NAME}py
       Boost::python
-      ${PYTHON_LIBRARIES}
-      ${Boost_LIBRARIES}
+      Python::Python
       ${PROJECT_NAME}
   )
 
