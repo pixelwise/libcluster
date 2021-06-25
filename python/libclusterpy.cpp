@@ -37,7 +37,7 @@ using namespace libcluster;
 
 
 // Convert (memory share) a numpy array to an Eigen MatrixXd
-MatrixXd numpy2MatrixXd (const object& X)
+MatrixXd numpy2MatrixXd (const boost::python::object& X)
 {
   if (PyArray_Check(X.ptr()) == false)
     throw invalid_argument("PyObject is not an array!");
@@ -130,7 +130,7 @@ std::vector<ArrayXd> getweights (const std::vector<W>& weights)
 
 // VDP
 boost::python::tuple wrapperVDP (
-    const object& X,
+    const boost::python::object& X,
     const float clusterprior,
     const int maxclusters,
     const bool verbose,
@@ -157,7 +157,7 @@ boost::python::tuple wrapperVDP (
 
 // BGMM
 boost::python::tuple wrapperBGMM (
-    const object& X,
+    const boost::python::object& X,
     const float clusterprior,
     const int maxclusters,
     const bool verbose,
