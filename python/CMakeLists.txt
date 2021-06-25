@@ -36,7 +36,7 @@ if(BUILD_PYTHON_INTERFACE)
       ${PROJECT_NAME}
   )
 
-  target_include_directories(${PROJECT_NAME}py PRIVATE ${PYTHON_INCLUDE_DIRS})
+  target_include_directories(${PROJECT_NAME}py PRIVATE ${Python_NumPy_INCLUDE_DIRS})
 
   set_target_properties(${PROJECT_NAME}py
       PROPERTIES
