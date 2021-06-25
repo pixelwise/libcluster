@@ -27,6 +27,14 @@
 #include <vector>
 #include "distributions.h"
 
+#if defined (HAVE_OPENMP)
+    #include <omp.h>
+#else
+    static size_t omp_get_max_threads()
+    {
+        return 1;
+    }
+#endif
 
 //
 // Namespace Definitions
