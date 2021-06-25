@@ -80,7 +80,7 @@ endif(OPENMP_FOUND)
 include_directories(${LIB_INCLUDE_DIR})
 
 # Library build instructions
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME}
   ${LIB_INCLUDE_DIR}/libcluster.h
   ${LIB_INCLUDE_DIR}/probutils.h
   ${LIB_INCLUDE_DIR}/distributions.h
