@@ -17,11 +17,7 @@ if(BUILD_PYTHON_INTERFACE)
   # Includes                       #
   #--------------------------------#
 
-  if(BUILD_USE_PYTHON3)
-    find_package(Boost COMPONENTS python3 REQUIRED)
-  else(BUILD_USE_PYTHON3)
-    find_package(Boost COMPONENTS python REQUIRED)
-  endif(BUILD_USE_PYTHON3)
+  find_package(Boost COMPONENTS ALL REQUIRED)
 
   find_package(Python 3 REQUIRED COMPONENTS Development Interpreter NumPy)
   include_directories(${Python_NumPy_INCLUDE_DIRS})
@@ -37,14 +33,8 @@ if(BUILD_PYTHON_INTERFACE)
     ${PYTHON_SOURCE_DIR}/libclusterpy.cpp
   )
 
-  if(BUILD_USE_PYTHON3)
-    set(BOOST_PYTHON boost_python3)
-  else(BUILD_USE_PYTHON3)
-    set(BOOST_PYTHON boost_python)
-  endif(BUILD_USE_PYTHON3)
-
   target_link_libraries(${PROJECT_NAME}py
-      ${BOOST_PYTHON}
+      Boost::python
       ${PYTHON_LIBRARIES}
       ${Boost_LIBRARIES}
       ${PROJECT_NAME}
