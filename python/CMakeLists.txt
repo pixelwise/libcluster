@@ -32,6 +32,7 @@ if(BUILD_PYTHON_INTERFACE)
 
   target_link_libraries(${PROJECT_NAME}py
       Boost::python
+      Python::Python
       ${PROJECT_NAME}
   )
 
