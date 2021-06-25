@@ -25,7 +25,6 @@
 #include <iostream>
 #include <Eigen/Dense>
 #include <vector>
-#include <omp.h>
 #include "distributions.h"
 
 
