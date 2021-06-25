@@ -19,10 +19,7 @@ if(BUILD_PYTHON_INTERFACE)
 
   find_package(Boost COMPONENTS ALL REQUIRED)
 
-  find_package(Python 3 REQUIRED COMPONENTS Development Interpreter NumPy)
-  include_directories(${Python_NumPy_INCLUDE_DIRS})
-  include_directories(${Python_INCLUDE_DIRS})
-    
+  find_package(Python 3 REQUIRED COMPONENTS Development Interpreter NumPy)    
 
   #--------------------------------#
   # Library Build Instructions     #
@@ -35,7 +32,6 @@ if(BUILD_PYTHON_INTERFACE)
 
   target_link_libraries(${PROJECT_NAME}py
       Boost::python
-      Python::Python
       ${PROJECT_NAME}
   )
 

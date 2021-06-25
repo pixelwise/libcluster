@@ -24,7 +24,7 @@
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION  // Test deprication for v1.7
 
 #include <boost/python.hpp>
-#include <numpy/arrayobject.h>
+#include <boost/python/numpy.hpp>
 #include "libcluster.h"
 
 
@@ -141,17 +141,6 @@ boost::python::tuple wrapperMCM (
 //  Hack for python2/3 numpy return value weirdness
 //
 
-#if PY_MAJOR_VERSION >= 3
-int*
-#else
-void
-#endif
-init_numpy()
-{
-    import_array();
-} 
-
-
 //
 //  Module definition
 //
@@ -201,7 +190,7 @@ BOOST_PYTHON_MODULE (libclusterpy)
 
 
   // To-python converters
-  init_numpy();
+  numpy::initialize();
   to_python_converter< Eigen::ArrayXd, eigen2numpy<Eigen::ArrayXd> >();
   to_python_converter< Eigen::MatrixXd, eigen2numpy<Eigen::MatrixXd> >();
   to_python_converter< std::vector<Eigen::ArrayXd>,
