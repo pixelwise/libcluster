@@ -25,7 +25,7 @@ if(BUILD_PYTHON_INTERFACE)
 
   include(${PYTHON_SOURCE_DIR}/FindNumpy.cmake REQUIRED)
   include_directories(${NUMPY_INCLUDE_DIR})
-  find_package(PythonLibs REQUIRED)
+  find_package(PythonLibs 3 REQUIRED)
   include_directories(${PYTHON_INCLUDE_DIRS})
     
 
