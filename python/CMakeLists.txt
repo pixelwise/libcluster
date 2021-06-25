@@ -24,9 +24,9 @@ if(BUILD_PYTHON_INTERFACE)
   endif(BUILD_USE_PYTHON3)
 
   include(${PYTHON_SOURCE_DIR}/FindNumpy.cmake REQUIRED)
-  include_directories(${NUMPY_INCLUDE_DIR})
+  include_directories(${Python_NumPy_INCLUDE_DIRS})
   find_package(Python 3 REQUIRED)
-  include_directories(${PYTHON_INCLUDE_DIRS})
+  include_directories(${Python_INCLUDE_DIRS})
     
 
   #--------------------------------#
