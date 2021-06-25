@@ -30,9 +30,12 @@
 #if defined (HAVE_OPENMP)
     #include <omp.h>
 #else
-    static size_t omp_get_max_threads()
+    static unsigned int omp_get_max_threads()
     {
         return 1;
+    }
+    static void omp_set_num_threads(unsigned int)
+    {
     }
 #endif
 
