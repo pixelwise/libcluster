@@ -40,13 +40,13 @@ using namespace libcluster;
 MatrixXd numpy2MatrixXd (const boost::python::object& X)
 {
   if (PyArray_Check(X.ptr()) == false)
-    throw invalid_argument("PyObject is not an array!");
+    throw std::invalid_argument("PyObject is not an array!");
 
   // Cast PyObject* to PyArrayObject* now we know that it's valid
   PyArrayObject* Xptr = (PyArrayObject*) X.ptr();
 
   if (PyArray_ISFLOAT(Xptr) == false)
-    throw invalid_argument("PyObject is not an array of floats/doubles!");
+    throw std::invalid_argument("PyObject is not an array of floats/doubles!");
 
   return Map<MatrixXd> ((double*) PyArray_DATA(Xptr),
                         PyArray_DIMS(Xptr)[0], PyArray_DIMS(Xptr)[1]);
@@ -150,7 +150,7 @@ boost::python::tuple wrapperVDP (
                       verbose, nthreads);
 
   // Return relevant objects
-  return make_tuple(f, qZ, ArrayXd(weights.Elogweight().exp()),
+  return boost::python::make_tuple(f, qZ, ArrayXd(weights.Elogweight().exp()),
                     getmean(clusters), getcov(clusters));
 }
 
