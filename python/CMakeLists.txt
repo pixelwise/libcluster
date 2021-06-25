@@ -41,7 +41,7 @@ if(BUILD_PYTHON_INTERFACE)
 
   set_target_properties(${PROJECT_NAME}py
       PROPERTIES
-      PREFIX ""
+      PREFIX "lib"
       SUFFIX ".so"
   )
 
