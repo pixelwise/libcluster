@@ -23,7 +23,6 @@
 
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION  // Test deprication for v1.7
 
-#include <omp.h>
 #include <boost/python.hpp>
 #include <numpy/arrayobject.h>
 #include "libcluster.h"
